@@ -12,5 +12,6 @@ git_commit: git_add
 	git commit -m "${commit_var}"
 	
 git_push: git_commit	
+	git checkout -b ${branch}
 	git push -u origin ${branch}
 
