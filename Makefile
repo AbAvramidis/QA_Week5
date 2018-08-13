@@ -11,5 +11,5 @@ git_commit: git_add
 	
 git_push: git_commit	
 	git remote add origin https://github.com/Abrams88/QA_Week5.git
-	git push -u orign master
+	git push -u origin master
 
