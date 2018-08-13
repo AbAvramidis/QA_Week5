@@ -1,6 +1,7 @@
 .PHONY = git_add git_commit git_push
-commit_var = " "
-	
+commit_var = "default_var"
+branch = "master"
+
 git_add:
 	git init
 	git add .
@@ -13,5 +14,5 @@ git_commit: git_add
 	git commit -m " ${commit_var}"
 	
 git_push: git_commit	
-	git push -u origin master
+	git push -u origin ${branch}
 
