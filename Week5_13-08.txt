@@ -1,0 +1,107 @@
+Makefile:
+---------
+
+create a Makefile txt
+
+.PHONY = test1 test2
+
+test_var = "hello"    #variables
+
+test1:
+	@echo "test1 ${test_var}"    #implement the variable into text
+	@echo "another_test"
+
+test2: test1
+	@echo "test2"
+
+
+Run it like: make test2 test_var=hello2    #make it interactive changing the variable
+
+
+
+
+GitHub Setup:
+-------------
+git init
+git add README.md
+git config --global user.email "iliasabrams@gmail.com"
+git config --global user.name "Abrams88"
+git commit -m "first commit"
+git remote add origin https://github.com/Abrams88/QA_Week5.git
+git push -u origin master
+
+git status
+git add "file"
+
+
+Create a Makefile to automate the push to github:
+.PHONY = git_add git_commit git_push
+
+commit_var = " "
+
+git_add:
+        git init
+        git add .
+
+git_commit: git_add
+        git config --global user.email "iliasabrams@gmail.com"
+        git config --global user.name "Abrams88"
+       # git commit -m "makefile commit"
+	git commit -m "${commit_var}"
+git_push: git_commit
+
+
+
+GitHub:
+git status -> make changes -> git add . -> git status -> git commit -m "..."
+
+        git push -u origin master
+
+
+
+
+Makefile:
+---------
+IF statement
+-------------
+.PHONY = test
+
+Foo = 2
+
+test:
+
+ifeq (${Foo}, 2)
+        @echo "hello"
+else
+        @echo "another hello"
+endif
+
+IF DEFINE
+--------------------
+test1: test
+
+ifdef Foo
+        @echo "exist"
+else
+        @echo "not defined"
+endif
+
+ifndef Foo
+        @echo "ifnded"
+endif
+
+----------------
+
+.PHONY = test
+
+USER = ${shell whoami}
+ERR = $(error found an error!)
+
+test:
+ifeq (${USER}, Jenkins)
+        @echo "hello jenkins"
+else
+
+        ${ERR}
+endif
+
