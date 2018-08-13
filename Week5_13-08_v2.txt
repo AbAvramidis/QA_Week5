@@ -1,0 +1,36 @@
+
+.PHONY = del ech mesg homedir priif githash
+MESSAGE = "default message"
+
+RM = ${shell find . -type f -iname \*.txt -delete}
+ECH = ${shell echo "my name is QA" >> echotext.txt}
+PRI = ${shell cat echotext.txt}
+HOMEDIR = ${shell echo ~}
+PRIIF = ${shell echo ~ | grep -i "z"| wc -l}
+ERR = ${error error with the home dir}
+GITHASH = ${shell git log -1 | head -n1}
+
+
+del:
+        ${RM}
+
+ech: del
+        ${ECH}
+pri: ech
+        ${PRI}
+
+mesg:
+        @echo "${MESSAGE}"
+
+homedir:
+        ${HOMEDIR}
+
+priif:
+ifeq (${PRIIF},1)
+        @echo ${shell ~}
+else
+        ${ERR}
+endif
+
+githash:
+        @echo ${GITHASH}
