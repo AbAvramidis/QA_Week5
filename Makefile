@@ -4,6 +4,8 @@ commit_var = " "
 git_add:
 	git init
 	git add .
+	git status
+	git branch
 
 git_commit: git_add
 	git config --global user.email "iliasabrams@gmail.com"
