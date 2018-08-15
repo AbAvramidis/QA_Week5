@@ -1,0 +1,20 @@
+Email last exercise
+--------------------
+
+
+Script to install http python to destination
+make install 
+run 
+and make uninstall
+keep log of journalctl
+
+#!/bin/bash
+
+zip -r pyth.zip python-systemd-http-server/*
+
+scp pyth.zip jenkins@10.0.10.11:.
+ssh jenkins@10.0.10.11 -t 'unzip pyth.zip; cd python-systemd-http-server; 
+sudo make install; sudo systemctl start python-simple-http-server.service; 
+sudo systemctl status python-simple-http-server.service; 
+sudo systemctl stop python-simple-http-server.service; 
+sudo make uninstall; sudo journalctl | grep -i "python" >> log.txt'

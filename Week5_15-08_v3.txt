@@ -1,0 +1,44 @@
+Cron Jobs
+--------
+To add or update job in crontab, use below command. 
+It will open crontab file in the editor where a job can be added/updated.
+
+https://crontab.guru/#23_0-20/2_*_*_*
+1 * * * *  #every hour
+* * * * *  #every min
+
+cmd > crontab -e 
+	$crontab -l
+
+If I put any command then
+You have new mail in /var/spool/mail/vagrant
+
+--------------
+
+SUDO
+We give users access to the sudo command with the visudo command
+sudo visudo
+/etc/sudoers
+
+https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux_OpenStack_Platform/2/html/Getting_Started_Guide/ch02s03.html
+
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+newuser ALL=(ALL:ALL) ALL
+
+## Allows people in group wheel to run all commands
+%wheel  ALL=(ALL)       ALL
+
+sudo usermod -aG wheel jenkins
+
+[jenkins@localhost ~]$ sudo whoami
+[sudo] password for jenkins:
+root
+
+
+---------------
+Sudo give permission to only a user to execute a command
+https://unix.stackexchange.com/questions/215412/allow-certain-guests-to-execute-certain-commands
+
+root    ALL=(ALL)       ALL
+jenkins2        ALL=(ALL)       NOPASSWD: /usr/bin/yum update

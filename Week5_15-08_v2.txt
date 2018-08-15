@@ -1,0 +1,46 @@
+Email Exercise:
+
+https://www.digitalocean.com/community/tutorials/package-management-basics-apt-yum-dnf-pkg
+2.	package format is the .deb
+	APT, the Advanced Packaging Tool
+	CentOS, yum is used to interact with both individual package files and repositories.
+	.deb package format 
+	dpkg -i google-chrome.deb
+
+4.	RPM (RPM Package Manager) is a popular utility for installing software 
+	Download the package you wish to install
+	To install the package, enter the following command at the prompt:   rpm -i DeathStar0_42b.rpm
+	If you are upgrading from an earlier version of the software package, 
+	run RPM in upgrade mode, as in the following example: 
+  	rpm -U DeathStar0_42b.rpm
+
+5.
+Debian / Ubuntu 	sudo apt-get update 
+
+
+ 			sudo apt update 
+CentOS 			yum check-update 
+
+6.	sudo yum install -y package Assumes "yes" where yum would usually prompt to continue. 
+
+7. They are whereis and type
+9.	sudo yum --showduplicates list nano
+	sudo yum install httpd-2.4.6-6
+11.  yum info nano
+12.  rpm -qi nano
+     dpkg -p nano
+
+13. sudo yum install yum-utils
+    repoquery --requires --resolve <package>
+    yum deplist sqlite
+
+
+Package A depends on Package B if B absolutely must be installed in order to run A. In some cases, A depends not only on B, but on a version of B. In this case, the version dependency is usually a lower limit, in the sense that A depends on any version of B more recent than some specified version.
+
+Package A recommends Package B, if the package maintainer judges that most users would not want A without also having the functionality provided by B.
+
+Package A suggests Package B if B contains files that are related to (and usually enhance) the functionality of A.
+
+Unresolved Dependency
+Suggested resolutions:
+	bar-2.0.20-3.i386.rpm

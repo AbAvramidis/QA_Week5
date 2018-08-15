@@ -1,0 +1,64 @@
+pstree -p
+
+sudo service "name" stop / start
+
+type service "name"
+
+sudo journalctl -xe
+
+Systemd is a system manager - tool for controlling the init system
+
+
+---------------------
+
+1) systemctl -at service
+
+systemctl list-units -> active units
+2)[vagrant@localhost ~]$ systemctl -at service | grep sshd.service
+  sshd.service                                          loaded    active   running OpenSSH server daemon
+3)Systemd and init have pid = 1
+pidof systemd 
+[vagrant@localhost ~]$ pstree -p | grep systemd
+systemd(1)-+-NetworkManager(571)-+-dhclient(641)
+           |-systemd-journal(413)
+           |-systemd-logind(563)
+           |-systemd-udevd(442)
+
+4)systemd
+5)
+# systemctl status sshd.service
+# systemctl stop sshd.service
+6) Run on start
+chkconfig sshd on
+
+SSH Client and SSH Daemon Server:
+----------------------------------
+When you try to make a ssh connection you are using the SSH client 
+to connect to SSHD at the other side.
+
+https://www.liberiangeek.net/2014/11/change-openssh-port-centos-7/
+
+Change the default listening port SSHD
+sudo vi /etc/ssh/sshd_config
+# If you want to change the port on a SELinux system, you have to tell
+ # SELinux about this change.
+ # semanage port -a -t ssh_port_t -p tcp #PORTNUMBER
+ #
+Port 2244
+ #AddressFamily any
+ #ListenAddress 0.0.0.0
+ #ListenAddress ::
+sudo semanage port -a -t ssh_port_t -p tcp 2244
+sudo yum -y install policycoreutils-python
+sudo systemctl restart sshd.service
+
+ssh ab@10.0.10.11 -p 2244
+
+-------------
+
+Install packages:
+
+dpkg -i package.deb
+rpm -i package.rpm
+
+
