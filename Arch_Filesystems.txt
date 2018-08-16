@@ -1,0 +1,24 @@
+Linux Filesystems:
+------------------
+
+1)sudo fdisk -l
+lsblk
+2)fdisk /dev/sda
+m
+n
+enter default
+enter default
+a
+w
+
+
+3)mkfs.ext4 /dev/sda1   #mkfilesystem type ext4
+4)mount /dev/sda1 /mnt
+ll /mnt
+
+
+5)pacstrap /mnt base base-devel  #install a new OS at that new partition
+
+change to that partition
+arch-chroot /mnt
+pacman -Sy nano
