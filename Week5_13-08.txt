@@ -32,7 +32,8 @@ git push -u origin master
 
 git status
 git add "file"
-
+$ git checkout master
+$ git pull origin master
 
 Create a Makefile to automate the push to github:
 .PHONY = git_add git_commit git_push
